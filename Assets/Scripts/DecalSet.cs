@@ -43,7 +43,9 @@ public class DecalSet : MonoBehaviour
 		m_Depth = depth;
 		m_Dir = origin.forward;
 
+		// project from a close point from the hit point
 		Matrix4x4 v = Matrix4x4.Inverse(Matrix4x4.TRS(point - m_Dir * offset, origin.rotation, new Vector3(1, 1, -1)));
+		// project from origin (need a high depth value)
 		// Matrix4x4 v = Matrix4x4.Inverse(Matrix4x4.TRS(origin.position, origin.rotation, new Vector3(1, 1, -1)));
 		Matrix4x4 p = Matrix4x4.Ortho(-size, size, -size, size, 0.0001f, depth);
 
